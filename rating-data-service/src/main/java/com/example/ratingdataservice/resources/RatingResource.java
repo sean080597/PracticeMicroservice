@@ -11,6 +11,12 @@ import com.example.ratingdataservice.models.Rating;
 @RequestMapping("/ratingsdata")
 public class RatingResource {
 
+	// get all rated movie IDs
+	
+	// loop movie IDs, call & get details
+	
+	// put them all together
+	
 	@GetMapping("/{movieId}")
 	public Rating getMovieInfo(@PathVariable("movieId") String movieId) {
 		return new Rating(movieId, 4);
