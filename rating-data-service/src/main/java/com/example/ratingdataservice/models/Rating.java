@@ -1,8 +1,10 @@
 package com.example.ratingdataservice.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Rating {
 	private String movieId;
 	private int rating;
