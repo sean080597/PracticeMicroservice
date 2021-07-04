@@ -25,8 +25,8 @@ public class MovieCatalogResource {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@Autowired
-	private WebClient.Builder webClientBuilder;
+//	@Autowired
+//	private WebClient.Builder webClientBuilder;
 
 	@GetMapping("/{userId}")
 	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
