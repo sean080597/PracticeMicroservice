@@ -1,3 +1,5 @@
+api:
+  key: ed726c895aba337b49c17aa57deb2e60
 eureka:
   client:
     serviceUrl:
