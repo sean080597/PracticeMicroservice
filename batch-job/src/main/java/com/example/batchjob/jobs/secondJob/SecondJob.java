@@ -1,4 +1,4 @@
-package com.example.batchjob.jobs.exampleJob;
+package com.example.batchjob.jobs.secondJob;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -22,7 +22,7 @@ import com.example.batchjob.listener.GenericItemListener;
 import com.example.batchjob.listener.JobCompletionListener;
 
 @Configuration
-public class ExampleJob {
+public class SecondJob {
 	
 	private AtomicBoolean enabled = new AtomicBoolean(false);
 
@@ -39,40 +39,40 @@ public class ExampleJob {
 	private JobLauncher jobLauncher;
 	
 	@Autowired
-	public ExampleJob(@Value("${spring.batch.job.isSchedule}") boolean isSchedule) {
+	public SecondJob(@Value("${spring.batch.job.isSchedule}") boolean isSchedule) {
 		this.enabled.set(isSchedule);
 	}
 	
 	@Bean
-	public JobReader quoteReader() {
+	public JobReader secondReader() {
 		return new JobReader();
 	};
 	
 	@Bean
-	public JobProcessor quoteProcessor() {
+	public JobProcessor secondProcessor() {
 		return new JobProcessor();
 	};
 	
 	@Bean
-	public JobWriter quoteWriter() {
+	public JobWriter secondWriter() {
 		return new JobWriter();
 	};
 	
 	@Bean
-	public GenericItemListener<String, String> genericListenerExampleJob() {
+	public GenericItemListener<String, String> genericListenerSecondJob() {
 	  return new GenericItemListener<String, String>();
 	}
 	
-	@Bean(name = "exampleJobObj")
+	@Bean(name = "secondJobObj")
 	public Job initJob() {
-		Step step1 = stepBuilderFactory.get("exampleJobStep").<String, String>chunk(chunkSize)
-				.reader(quoteReader())
-				.listener((ItemReadListener<String>) genericListenerExampleJob())
-				.processor(quoteProcessor())
-				.listener((ItemProcessListener<String, String>) genericListenerExampleJob())
-				.writer(quoteWriter())
-				.listener((ItemWriteListener<String>) genericListenerExampleJob()).build();
-		Job job = jobBuilderFactory.get("exampleJob").listener(new JobCompletionListener()).flow(step1).end().build();
+		Step step1 = stepBuilderFactory.get("secondJobStep").<String, String>chunk(chunkSize)
+				.reader(secondReader())
+				.listener((ItemReadListener<String>) genericListenerSecondJob())
+				.processor(secondProcessor())
+				.listener((ItemProcessListener<String, String>) genericListenerSecondJob())
+				.writer(secondWriter())
+				.listener((ItemWriteListener<String>) genericListenerSecondJob()).build();
+		Job job = jobBuilderFactory.get("secondJob").listener(new JobCompletionListener()).flow(step1).end().build();
 		return job;
 	}
 	

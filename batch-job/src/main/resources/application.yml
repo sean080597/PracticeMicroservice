@@ -18,6 +18,9 @@ spring:
   application:
     name: batch-service
   batch:    job:      enabled: false
+      isSchedule: false
+      cmdEnabled: false
     chunkSize: 50
+    cronSimpleJob: 0 */1 * ? * *
   main:
     banner-mode: off

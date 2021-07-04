@@ -1,4 +1,4 @@
-package com.example.moviecatalogservice.resources;
+package com.example.moviecatalogservice.controllers;
 
 import java.util.Arrays;
 import java.util.Collections;

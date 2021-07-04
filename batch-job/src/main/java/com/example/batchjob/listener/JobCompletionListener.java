@@ -6,6 +6,11 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 
 public class JobCompletionListener extends JobExecutionListenerSupport {
+	
+	@Override
+	public void beforeJob(JobExecution jobExecution) {
+		SecurityUtil.logMessage("=============== START NEW BATCH JOB ===============");
+	}
 
 	@Override
 	public void afterJob(JobExecution jobExecution) {
