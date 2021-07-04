@@ -1,4 +1,4 @@
-package com.example.ratingdataservice.resources;
+package com.example.ratingdataservice.controllers;
 
 import java.util.Arrays;
 import java.util.List;
